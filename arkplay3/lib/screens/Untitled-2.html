@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="" crossorigin="anonymous"/>
+<link rel="stylesheet" href="/style_rcp-e600e6.css?t=1722971397"/>
+
+<style>
+    body {
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+    .hidden {
+        display:none;
+    }
+    
+    #asdf {
+        width: 0px;
+        height: 0px;
+    }
+    
+    #iframe_title {
+        position: absolute;
+        top: calc(50% + 45px);
+        font-size: 1.1em;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        width: calc(100% - 30px);
+        text-align: center;
+        padding: 0px 15px;
+    }
+</style>
+</head>
+<body data-i="944947_1x1"  >
+    
+    
+        <!--<div id="pop_asdf" style="position:absolute; width:100%; height:100%; z-index:2147483650; pointer-events: none;"></div>-->
+        
+    <!--<div id="loading_overlay"></div>-->
+    <div id="the_frame" style="background-image: none;">
+        <div id="pl_but_background" style="background-image: url('//image.tmdb.org/t/p/w780/zZqpAXxVSBtxV9qPBcscfXBcL2w.jpg');">
+            <div id="iframe_title">
+                Game of Thrones (2011) S01E01            </div>
+            <i id="pl_but" class="fas fa-play"></i>
+        </div>
+    </div>
+    
+    <div id="hidden" style="display:hidden;"></div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha256-1A78rJEdiWTzco6qdn3igTBv9VupN3Q1ozZNTR4WE/Y=" crossorigin="anonymous"></script>
+    <script src="/base64.js?t="></script>
+    
+    
+    <script>
+    
+    
+    /*
+    $(document).ready(function(){
+        
+        
+        if($.cookie('pop_asdf')){
+            $("#pop_asdf").addClass("hidden");
+        }
+        
+        $("#pop_asdf").click(function(){
+            if(!$.cookie('pop_asdf')){
+                if($.cookie('pop_asdf_tmp') >= 3){
+                    var date = new Date();
+                    date.setTime(date.getTime() + (10800 * 1000));
+                    $.cookie('pop_asdf', 1, { expires: date });
+                    $("#pop_asdf").addClass("hidden");
+                }else{
+                    var cookie_value = 1;
+                    if($.cookie('pop_asdf_tmp'))
+                        cookie_value = $.cookie('pop_asdf_tmp');
+                        
+                    cookie_value++;
+                    
+                    $.cookie('pop_asdf_tmp', cookie_value);
+                    $(this).addClass("hidden");
+                    setTimeout(function(){
+                        $("#pop_asdf").removeClass("hidden");
+                    }, 59000);
+                }
+            }
+        });
+    });
+    */
+    
+        
+    $("#pl_but_background , #pl_but").click(function(){
+        loadIframe();
+    });
+    
+        
+    function loadIframe(data = 1){
+        if(data == 1){
+            $("#the_frame").removeAttr("style");
+            $("#the_frame").html("");
+            $('<iframe>', {
+               id: 'player_iframe',
+               src: '/prorcp/N2I5N2FlZjcxZTQyZjQzYTllYjM1YjhmZmY3MDU2ZGU6YWt4Uk9FOUVSVEZHY1U1YWVIVXZPRXBtYmtVMlRIaHpNRFptUkZCT1NUQndXR0pEYTNwa1lVMHpNa2wzTjJ0clVIRTFlVXQ1U2sxaVlWaHVXVW80U2xkbWNXOHpWekI1VUhNeE1sWTNaamwyVldkaGJYWTBkSFoxVjBKR2EweHZkWE55WmxoUE1tRTFTMDlXUTJOWmMxcHdTR0pJV1RWM1dVMW1jeTkzTkZrdlV6bGFaM1EwUmtKS2NrMVZlRlUwTDBzMk5GaGpTVTgwTW1ad2NFUnZPWGxPTDNaMU9EQklSRGhTY1VwTVVESk5jazFhVWl0Qkt6TmlZM1Z2WjBaSFpYVkZNa3N4YWpkQlMxQTBhRlpQWTNkek4wNVdaRTQwZUdWWVpXSnFVM1UyUjJwQ1kwSlNiVVpOWmpjeFJIbEZTbWxPU21GTE1rbDZTWFJPWmtoUE4zUk9NM2czWTNONVRraDJXR3RTVEVGcmMzTldjbmhaUW5ocEswZGFRVFptWkVkSUsxVjVXSGQ0V1dJME1tMTRjRll5VTJ0blEzQjFWMHhEUzFOb1R6aHNOWEozZURaa2RrMTZRMUpOUnpscGNUWnlSalJOT0dZelRHVjFPV3hsYWxGWE0zTkVSQ3MxUlVWTlZrMDRUblZMYnpVeWFtMWxWVGxTVTBoVE5rSmFZV0o1V0dKb1YwcDNkbWhOY0hWSVZ6UTVhblJGZURaMU5HVmFTM05NY0M5Tk4wb3dSRFZVWjJOc1oyTllURzFKU2xwM1Z5ODFkWG95VFRkM2NIRkRSbnByT1V0M1YzaFlkMGg1TWtJMmVETlBXRVprWTBrd1JDOTFjM2haZDJ3MlNFaFJlbHBwVWxJM1MwNXFZM1F3ZWtOSWNUZEthSFJ2VUdseVNqQktNRlowT0dveWNYUXJkVVphVFc5alFXNTRTbTg1UVhOSE5HeDZLMVZNU1hjMGNDODFSV2hZYTNSWFIwaDJXREl4ZWswemMzcHViMDAyYUdOeGNXZFhaRTB6WTBVcmNIcFBTa05IVmtSU1psZDRUMmgwUjBWVlVVNVFkR3RYYVc1VlVUWlRXR1pNYzNsUU5YQk5WREEyUzNKR2NEZFRXbWN5WmtwNmR6azRSMDE2U1VWelJsWmFkekUwVDNkNlNqa3ZNV1psTTNoT1dGaFpiRzB4SzI5dlpYaExjRTVrYnpaRmVuQmpTMEV5UTNsclUyczBVMEpUVDFOc1Z6UmhURFoyUVRSR04xRlFha2xZU1RjNU5uRXJlalJTYXpGWFdEUlhOR0pUYW1VeFkyUTJjVEF5YTNZMmRrRk9NWEpRWm1saFJYbFFNa1ZDVW14SGN6aExiV1ZDY1VKMVlYWXdOa3RVZWt4bFpDdFNZemRhTXk5VU9UUnVVRXQ0YmpsQk5VcFdjVVp5VVZGTVppODRTV2haVDJ0d1dHNVRPVFF2TUdrclVqTlhUVWhpZGs1TFkwMWxTRVJ4Tm5oemIwaHBSVFI2UmtGYVoxZ3hVazQzVkRsdFdrTndSVVpoVDNSUVdTdFdTbU5OY0V0RGJXVlpRM0JSU0V4bFQyRjNNemswUWxabWFtRTVWR3BYUVhaTGVYaDBaQ3RGTDNwWE1sSnZPRzlPTnl0bFExb3ljWFo2ZEhZMmFqUnZOaXROTlZsaGR6SlZVRVo0TUVsVFVIaFpPRUkyTkc1SU1FOXNWRGMwZVZWTGRtTmtWekZVTVU1UE1FVkpZek5UVGpaU1J6bEhTSEZMUm1jMVZGWm5iRk5xY1RkeGRuQkdiMnM1ZEZOaE0zZzFibE5NVG1Rdk1rWXJWbkp2WVhWbU5WQXJXblJZVVZGQ2IzQjFXRU4wVjFZdk56Y3pTV3MwVVhsUE4wc3ZZWG8yWVZaSmJtWlVUMWhKZURSS1ZFbEpSUzlFZEZaV2RFVmtTWGxJUnk4eVNVZGhWazFLUXpaaWJYQlhTV0pJZVdGc1NqQTFiREpqV0RsNVlrRXlSVzFrVUdWd1NGQTJWbWw1ZVdneVFrSnZPR2xpVlZwbE1EQTVVVFZC',
+               frameborder: 0,
+               scrolling: 'no',
+               allowfullscreen: 'yes',
+               allow: "autoplay",
+               style: 'height: 100%; width: 100%;'
+            }).appendTo('#the_frame');
+            $("#player_iframe").on("load", function () {
+                $("#the_frame").attr("style","background-image: none;");
+            });
+        }
+    }
+    
+    // pm redirector
+    window.addEventListener('message', message => {
+        if (message.source == window) {
+            return; // Skip message in this event listener
+        }
+        
+        var the_iframe = document.getElementById('player_iframe');
+        
+        if(message.source == window.parent){
+            the_iframe.contentWindow.postMessage(message.data,'*');
+        }else{
+            window.parent.postMessage(message.data , '*');
+        }
+        
+        
+        if(message.source == the_iframe.contentWindow){
+            the_iframe.contentWindow.postMessage("test",'*');
+        }
+        
+    });
+        
+        
+        
+    </script>
+    
+    
+    
+    
+    
+    
+   
+</body>
+</html>
